@@ -33,7 +33,7 @@ function submitReport() {
       timestamp
     };
 
-    const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
+    const reports = JSON.parse(localStorage.getItem("reports.html") || "[]");
     reports.unshift(report);
     localStorage.setItem("mdtReports", JSON.stringify(reports));
 
@@ -54,7 +54,7 @@ function submitReport() {
       timestamp
     };
 
-    const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
+    const reports = JSON.parse(localStorage.getItem("reports.html") || "[]");
     reports.unshift(report);
     localStorage.setItem("mdtReports", JSON.stringify(reports));
 
