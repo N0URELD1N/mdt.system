@@ -33,7 +33,7 @@ function submitReport() {
       timestamp
     };
 
-    const reports = JSON.parse(localStorage.getItem("reports.html") || "[]");
+    const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
     reports.unshift(report);
     localStorage.setItem("mdtReports", JSON.stringify(reports));
 
@@ -54,43 +54,10 @@ function submitReport() {
       timestamp
     };
 
-    const reports = JSON.parse(localStorage.getItem("reports.html") || "[]");
+    const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
     reports.unshift(report);
     localStorage.setItem("mdtReports", JSON.stringify(reports));
 
     document.getElementById("confirmation").textContent = "تم إرسال التقرير بنجاح!";
   }
 }
-
-
-
-
-
-
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    const reportsContainer = document.getElementById("reports-container");
-    const reports = JSON.parse(localStorage.getItem("mdtReports")) || [];
-
-    if (reports.length === 0) {
-        reportsContainer.innerHTML = "<p>لا توجد تقارير حتى الآن.</p>";
-        return;
-    }
-
-    reports.forEach((report, index) => {
-        const reportDiv = document.createElement("div");
-        reportDiv.className = "report";
-        reportDiv.innerHTML = `
-            <h3>الاسم: ${report.personName}</h3>
-            <p>مقدم البلاغ: ${report.reporterName}</p>
-            <p>حالة المهمة: ${report.missionStatus}</p>
-            <p>نوع الحالة: ${report.caseType}</p>
-            <p>الرمز الدولي: ${report.personCode}</p>
-            <p>معلومات إضافية: ${report.additionalInfo || "لا يوجد"}</p>
-            ${report.image ? `<img src="${report.image}" alt="صورة الشخص" width="100">` : ""}
-            <hr>
-        `;
-        reportsContainer.appendChild(reportDiv);
-    });
-});
