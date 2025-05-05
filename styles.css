@@ -94,3 +94,11 @@ button:hover {
     flex-grow: 1;
     text-align: right;
 }
+
+.footer {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 12px;
+  color: #888;
+}
+
