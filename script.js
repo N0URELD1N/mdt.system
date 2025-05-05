@@ -30,12 +30,13 @@ function submitReport() {
       timestamp
     };
 
-    const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
-    reports.unshift(report);
-    localStorage.setItem("mdtReports", JSON.stringify(reports));
-
+    db.collection("reports").add(report)
+  .then(() => {
     document.getElementById("confirmation").textContent = "تم إرسال التقرير بنجاح!";
-  };
+  })
+  .catch((error) => {
+    console.error("حدث خطأ:", error);
+  });
 
   if (imageInput.files.length > 0) {
     reader.readAsDataURL(imageInput.files[0]);
