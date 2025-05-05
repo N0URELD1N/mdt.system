@@ -57,6 +57,6 @@ function submitReport() {
 
     document.getElementById("confirmation").textContent = "تم إرسال التقرير بنجاح!";
 
-    window.location.href = "reports.html"; // أو اسم الصفحة التي تعرض التقارير
+
   }
 }
