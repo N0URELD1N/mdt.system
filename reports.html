@@ -4,8 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>سجل تقارير MDT</title>
-  <link rel="stylesheet" href="style.css"/>
+ 
+  
+  <link rel="stylesheet" href="styles.css"/>
   <style>
+
+  <script src="script.js"></script>
+
+    
     .report {
       border-bottom: 1px solid #444;
       padding: 15px 0;
@@ -33,24 +39,31 @@
 
   <script>
     function renderReports() {
+ 
       const reports = JSON.parse(localStorage.getItem("mdtReports") || "[]");
       const search = document.getElementById("searchInput").value.trim().toLowerCase();
-      const list = document.getElementById("reportList");
+      const list = document.getElementById("reportList");  
 
       const filtered = reports.filter(r => r.personName.toLowerCase().includes(search));
 
       list.innerHTML = filtered.map(r => `
         <div class="report">
           <strong>الوقت:</strong> ${r.timestamp}<br>
-          <strong>المُبلّغ:</strong> ${r.reporterName}<br>
+          <strong>اسم العسكري:</strong> ${r.reporterName}<br>
           <strong>حالة المهمة:</strong> ${r.missionStatus}<br>
           <strong>نوع الحالة:</strong> ${r.caseType}<br>
           <strong>اسم الشخص:</strong> ${r.personName}<br>
           <strong>معلومات إضافية:</strong> ${r.additionalInfo || 'لا توجد'}<br>
           ${r.imageData ? `<img src="${r.imageData}" alt="صورة الشخص">` : ''}
-        </div>
+      
+
       `).join('') || "<p>لا توجد تقارير تطابق البحث.</p>";
     }
+
+    
+
+
+
 
     document.addEventListener("DOMContentLoaded", renderReports);
   </script>
